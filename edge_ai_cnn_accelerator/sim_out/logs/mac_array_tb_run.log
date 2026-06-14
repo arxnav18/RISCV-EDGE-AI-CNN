@@ -1,0 +1,4 @@
+FST info: dumpfile sim_out/waveforms/mac_array.fst opened for output.
+PASS: All 1s
+PASS: Complex Vector
+tb/mac_array_tb.v:73: $finish called at 160000 (1ps)

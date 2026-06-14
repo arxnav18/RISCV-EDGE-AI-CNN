@@ -1,0 +1,1081 @@
+$date
+	Sat Mar 14 12:59:16 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module conv3d_accelerator_tb $end
+$var wire 32 ! pixel_out [31:0] $end
+$var wire 1 " out_valid $end
+$var wire 1 # done $end
+$var reg 1 $ clk $end
+$var reg 8 % img_height [7:0] $end
+$var reg 8 & img_width [7:0] $end
+$var reg 8 ' num_channels [7:0] $end
+$var reg 8 ( pixel_in [7:0] $end
+$var reg 1 ) pixel_valid_in $end
+$var reg 1 * rst_n $end
+$var reg 1 + start_conv $end
+$var reg 72 , weight_in [71:0] $end
+$var reg 1 - weights_valid $end
+$var integer 32 . i [31:0] $end
+$scope module uut $end
+$var wire 1 $ clk $end
+$var wire 8 / img_height [7:0] $end
+$var wire 8 0 img_width [7:0] $end
+$var wire 8 1 num_channels [7:0] $end
+$var wire 8 2 pixel_in [7:0] $end
+$var wire 1 ) pixel_valid_in $end
+$var wire 1 * rst_n $end
+$var wire 1 + start_conv $end
+$var wire 72 3 weight_in [71:0] $end
+$var wire 1 - weights_valid $end
+$var wire 1 4 window_valid $end
+$var wire 72 5 window_pixels [71:0] $end
+$var wire 16 6 total_pixels [15:0] $end
+$var wire 32 7 pixel_out [31:0] $end
+$var wire 1 " out_valid $end
+$var wire 1 8 mac_valid $end
+$var wire 20 9 mac_result [19:0] $end
+$var wire 1 : line_valid $end
+$var wire 8 ; line_out_2 [7:0] $end
+$var wire 8 < line_out_1 [7:0] $end
+$var wire 8 = line_out_0 [7:0] $end
+$var reg 8 > ch_count [7:0] $end
+$var reg 1 ? clear_acc $end
+$var reg 1 # done $end
+$var reg 16 @ out_pixel_count [15:0] $end
+$scope module u_chan_acc $end
+$var wire 1 ? clear $end
+$var wire 1 $ clk $end
+$var wire 1 * rst_n $end
+$var wire 20 A mac_value [19:0] $end
+$var wire 1 8 en $end
+$var parameter 32 B IN_WIDTH $end
+$var parameter 32 C OUT_WIDTH $end
+$var reg 32 D accum_out [31:0] $end
+$var reg 32 E sum_reg [31:0] $end
+$var reg 1 " valid_out $end
+$upscope $end
+$scope module u_line_buf $end
+$var wire 1 $ clk $end
+$var wire 1 ) en $end
+$var wire 8 F fifo1_out_data [7:0] $end
+$var wire 8 G fifo2_out_data [7:0] $end
+$var wire 8 H image_width [7:0] $end
+$var wire 8 I pixel_in [7:0] $end
+$var wire 1 * rst_n $end
+$var parameter 32 J DATA_WIDTH $end
+$var parameter 32 K MAX_IMAGE_WIDTH $end
+$var reg 8 L out_row0 [7:0] $end
+$var reg 8 M out_row1 [7:0] $end
+$var reg 8 N out_row2 [7:0] $end
+$var reg 8 O rd_ptr [7:0] $end
+$var reg 1 P state_fill $end
+$var reg 1 : valid_out $end
+$var reg 8 Q wr_ptr [7:0] $end
+$upscope $end
+$scope module u_mac_array $end
+$var wire 1 $ clk $end
+$var wire 1 R en $end
+$var wire 1 * rst_n $end
+$var wire 72 S weights_in [71:0] $end
+$var wire 72 T pixels_in [71:0] $end
+$var reg 20 U acc_sum [19:0] $end
+$var reg 20 V mac_out [19:0] $end
+$var reg 1 8 valid_out $end
+$var reg 1 W valid_stg1 $end
+$var reg 1 X valid_stg2 $end
+$var integer 32 Y i [31:0] $end
+$upscope $end
+$scope module u_sliding_win $end
+$var wire 1 $ clk $end
+$var wire 8 Z col_row0 [7:0] $end
+$var wire 8 [ col_row1 [7:0] $end
+$var wire 8 \ col_row2 [7:0] $end
+$var wire 1 : en $end
+$var wire 1 * rst_n $end
+$var parameter 32 ] DATA_WIDTH $end
+$var reg 8 ^ r0_c0 [7:0] $end
+$var reg 8 _ r0_c1 [7:0] $end
+$var reg 8 ` r0_c2 [7:0] $end
+$var reg 8 a r1_c0 [7:0] $end
+$var reg 8 b r1_c1 [7:0] $end
+$var reg 8 c r1_c2 [7:0] $end
+$var reg 8 d r2_c0 [7:0] $end
+$var reg 8 e r2_c1 [7:0] $end
+$var reg 8 f r2_c2 [7:0] $end
+$var reg 1 4 valid_out $end
+$var reg 72 g window_out [71:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1000 ]
+b10000000 K
+b1000 J
+b100000 C
+b10100 B
+$end
+#0
+$dumpvars
+b0 g
+b0 f
+b0 e
+b0 d
+b0 c
+b0 b
+b0 a
+b0 `
+b0 _
+b0 ^
+b0 \
+b0 [
+b0 Z
+b1001 Y
+0X
+0W
+b0 V
+b0 U
+b0 T
+b0 S
+0R
+b0 Q
+0P
+b0 O
+b0 N
+b0 M
+b0 L
+b0 I
+b1000 H
+bx G
+bx F
+b0 E
+b0 D
+b0 A
+b0 @
+1?
+b0 >
+b0 =
+b0 <
+b0 ;
+0:
+b0 9
+08
+b0 7
+b1000000 6
+b0 5
+04
+b0 3
+b0 2
+b11 1
+b1000 0
+b1000 /
+bx .
+0-
+b0 ,
+0+
+0*
+0)
+b0 (
+b11 '
+b1000 &
+b1000 %
+0$
+0#
+0"
+b0 !
+$end
+#5000
+b1001 Y
+1$
+#10000
+0$
+#15000
+b1001 Y
+1$
+#20000
+0$
+1*
+#25000
+1$
+#30000
+0$
+1+
+#35000
+1$
+#40000
+0$
+b0 .
+b10000000100000001000000010000000100000001000000010000000100000001 ,
+b10000000100000001000000010000000100000001000000010000000100000001 3
+b10000000100000001000000010000000100000001000000010000000100000001 S
+1-
+0+
+#45000
+1$
+#50000
+0$
+b1 .
+b1 (
+b1 2
+b1 I
+1)
+#55000
+b1 Q
+b1 F
+1:
+bx ;
+bx N
+bx \
+bx <
+bx M
+bx [
+b1 =
+b1 L
+b1 Z
+1$
+#60000
+0$
+b10 .
+#65000
+1R
+14
+b10000000000000000xxxxxxxx0000000000000000xxxxxxxx0000000000000000 5
+b10000000000000000xxxxxxxx0000000000000000xxxxxxxx0000000000000000 T
+b10000000000000000xxxxxxxx0000000000000000xxxxxxxx0000000000000000 g
+b1 f
+bx c
+bx `
+b1 G
+b1 O
+b10 Q
+b1 <
+b1 M
+b1 [
+1$
+#70000
+0$
+b11 .
+#75000
+b10 O
+b11 Q
+b1 ;
+b1 N
+b1 \
+b1000000010000000000000001xxxxxxxx00000000xxxxxxxxxxxxxxxx00000000 5
+b1000000010000000000000001xxxxxxxx00000000xxxxxxxxxxxxxxxx00000000 T
+b1000000010000000000000001xxxxxxxx00000000xxxxxxxxxxxxxxxx00000000 g
+b1 e
+b1 c
+bx b
+bx _
+1W
+b1001 Y
+1$
+#80000
+0$
+b100 .
+#85000
+1X
+b100000001000000010000000100000001xxxxxxxx00000001xxxxxxxxxxxxxxxx 5
+b100000001000000010000000100000001xxxxxxxx00000001xxxxxxxxxxxxxxxx T
+b100000001000000010000000100000001xxxxxxxx00000001xxxxxxxxxxxxxxxx g
+b1 d
+b1 b
+bx a
+b1 `
+bx ^
+b11 O
+b100 Q
+b1001 Y
+1$
+#90000
+0$
+b101 .
+#95000
+b100 O
+b101 Q
+b100000001000000010000000100000001000000010000000100000001xxxxxxxx 5
+b100000001000000010000000100000001000000010000000100000001xxxxxxxx T
+b100000001000000010000000100000001000000010000000100000001xxxxxxxx g
+b1 a
+b1 _
+18
+bx 9
+bx A
+bx V
+b1001 Y
+1$
+#100000
+0$
+b110 .
+#105000
+0?
+b1 >
+1"
+bx E
+b10000000100000001000000010000000100000001000000010000000100000001 5
+b10000000100000001000000010000000100000001000000010000000100000001 T
+b10000000100000001000000010000000100000001000000010000000100000001 g
+b1 ^
+b101 O
+b110 Q
+b1001 Y
+1$
+#110000
+0$
+b111 .
+#115000
+b110 O
+b111 Q
+0"
+b10 >
+b1001 Y
+1$
+#120000
+0$
+b1000 .
+#125000
+1?
+b0 >
+b111 O
+b0 Q
+b1001 Y
+1$
+#130000
+0$
+b1001 .
+#135000
+b0 O
+b1 Q
+b1001 9
+b1001 A
+b1001 V
+1"
+bx !
+bx 7
+bx D
+0?
+b1 >
+b1001 Y
+1$
+#140000
+0$
+b1010 .
+#145000
+b10 >
+0"
+b1 O
+b10 Q
+b1001 Y
+1$
+#150000
+0$
+b1011 .
+#155000
+b10 O
+b11 Q
+1?
+b0 >
+b1001 Y
+1$
+#160000
+0$
+b1100 .
+#165000
+0?
+b1 >
+1"
+b1001 E
+b11 O
+b100 Q
+b1001 Y
+1$
+#170000
+0$
+b1101 .
+#175000
+b100 O
+b101 Q
+0"
+b10010 E
+b10 >
+b1001 Y
+1$
+#180000
+0$
+b1110 .
+#185000
+1?
+b0 >
+b11011 E
+b101 O
+b110 Q
+b1001 Y
+1$
+#190000
+0$
+b1111 .
+#195000
+b110 O
+b111 Q
+1"
+b11011 !
+b11011 7
+b11011 D
+b1001 E
+0?
+b1 >
+b1001 Y
+1$
+#200000
+0$
+b10000 .
+#205000
+b10 >
+0"
+b10010 E
+b111 O
+b0 Q
+b1001 Y
+1$
+#210000
+0$
+b10001 .
+#215000
+b0 O
+b1 Q
+b11011 E
+1?
+b0 >
+b1001 Y
+1$
+#220000
+0$
+b10010 .
+#225000
+0?
+b1 >
+1"
+b1001 E
+b1 O
+b10 Q
+b1001 Y
+1$
+#230000
+0$
+b10011 .
+#235000
+b10 O
+b11 Q
+0"
+b10010 E
+b10 >
+b1001 Y
+1$
+#240000
+0$
+b10100 .
+#245000
+1?
+b0 >
+b11011 E
+b11 O
+b100 Q
+b1001 Y
+1$
+#250000
+0$
+b10101 .
+#255000
+b100 O
+b101 Q
+1"
+b1001 E
+0?
+b1 >
+b1001 Y
+1$
+#260000
+0$
+b10110 .
+#265000
+b10 >
+0"
+b10010 E
+b101 O
+b110 Q
+b1001 Y
+1$
+#270000
+0$
+b10111 .
+#275000
+b110 O
+b111 Q
+b11011 E
+1?
+b0 >
+b1001 Y
+1$
+#280000
+0$
+b11000 .
+#285000
+0?
+b1 >
+1"
+b1001 E
+b111 O
+b0 Q
+b1001 Y
+1$
+#290000
+0$
+b11001 .
+#295000
+b0 O
+b1 Q
+0"
+b10010 E
+b10 >
+b1001 Y
+1$
+#300000
+0$
+b11010 .
+#305000
+1?
+b0 >
+b11011 E
+b1 O
+b10 Q
+b1001 Y
+1$
+#310000
+0$
+b11011 .
+#315000
+b10 O
+b11 Q
+1"
+b1001 E
+0?
+b1 >
+b1001 Y
+1$
+#320000
+0$
+b11100 .
+#325000
+b10 >
+0"
+b10010 E
+b11 O
+b100 Q
+b1001 Y
+1$
+#330000
+0$
+b11101 .
+#335000
+b100 O
+b101 Q
+b11011 E
+1?
+b0 >
+b1001 Y
+1$
+#340000
+0$
+b11110 .
+#345000
+0?
+b1 >
+1"
+b1001 E
+b101 O
+b110 Q
+b1001 Y
+1$
+#350000
+0$
+b11111 .
+#355000
+b110 O
+b111 Q
+0"
+b10010 E
+b10 >
+b1001 Y
+1$
+#360000
+0$
+b100000 .
+#365000
+1?
+b0 >
+b11011 E
+b111 O
+b0 Q
+b1001 Y
+1$
+#370000
+0$
+b100001 .
+#375000
+b0 O
+b1 Q
+1"
+b1001 E
+0?
+b1 >
+b1001 Y
+1$
+#380000
+0$
+b100010 .
+#385000
+b10 >
+0"
+b10010 E
+b1 O
+b10 Q
+b1001 Y
+1$
+#390000
+0$
+b100011 .
+#395000
+b10 O
+b11 Q
+b11011 E
+1?
+b0 >
+b1001 Y
+1$
+#400000
+0$
+b100100 .
+#405000
+0?
+b1 >
+1"
+b1001 E
+b11 O
+b100 Q
+b1001 Y
+1$
+#410000
+0$
+b100101 .
+#415000
+b100 O
+b101 Q
+0"
+b10010 E
+b10 >
+b1001 Y
+1$
+#420000
+0$
+b100110 .
+#425000
+1?
+b0 >
+b11011 E
+b101 O
+b110 Q
+b1001 Y
+1$
+#430000
+0$
+b100111 .
+#435000
+b110 O
+b111 Q
+1"
+b1001 E
+0?
+b1 >
+b1001 Y
+1$
+#440000
+0$
+b101000 .
+#445000
+b10 >
+0"
+b10010 E
+b111 O
+b0 Q
+b1001 Y
+1$
+#450000
+0$
+b101001 .
+#455000
+b0 O
+b1 Q
+b11011 E
+1?
+b0 >
+b1001 Y
+1$
+#460000
+0$
+b101010 .
+#465000
+0?
+b1 >
+1"
+b1001 E
+b1 O
+b10 Q
+b1001 Y
+1$
+#470000
+0$
+b101011 .
+#475000
+b10 O
+b11 Q
+0"
+b10010 E
+b10 >
+b1001 Y
+1$
+#480000
+0$
+b101100 .
+#485000
+1?
+b0 >
+b11011 E
+b11 O
+b100 Q
+b1001 Y
+1$
+#490000
+0$
+b101101 .
+#495000
+b100 O
+b101 Q
+1"
+b1001 E
+0?
+b1 >
+b1001 Y
+1$
+#500000
+0$
+b101110 .
+#505000
+b10 >
+0"
+b10010 E
+b101 O
+b110 Q
+b1001 Y
+1$
+#510000
+0$
+b101111 .
+#515000
+b110 O
+b111 Q
+b11011 E
+1?
+b0 >
+b1001 Y
+1$
+#520000
+0$
+b110000 .
+#525000
+0?
+b1 >
+1"
+b1001 E
+b111 O
+b0 Q
+b1001 Y
+1$
+#530000
+0$
+b110001 .
+#535000
+b0 O
+b1 Q
+0"
+b10010 E
+b10 >
+b1001 Y
+1$
+#540000
+0$
+b110010 .
+#545000
+1?
+b0 >
+b11011 E
+b1 O
+b10 Q
+b1001 Y
+1$
+#550000
+0$
+b110011 .
+#555000
+b10 O
+b11 Q
+1"
+b1001 E
+0?
+b1 >
+b1001 Y
+1$
+#560000
+0$
+b110100 .
+#565000
+b10 >
+0"
+b10010 E
+b11 O
+b100 Q
+b1001 Y
+1$
+#570000
+0$
+b110101 .
+#575000
+b100 O
+b101 Q
+b11011 E
+1?
+b0 >
+b1001 Y
+1$
+#580000
+0$
+b110110 .
+#585000
+0?
+b1 >
+1"
+b1001 E
+b101 O
+b110 Q
+b1001 Y
+1$
+#590000
+0$
+b110111 .
+#595000
+b110 O
+b111 Q
+0"
+b10010 E
+b10 >
+b1001 Y
+1$
+#600000
+0$
+b111000 .
+#605000
+1?
+b0 >
+b11011 E
+b111 O
+b0 Q
+b1001 Y
+1$
+#610000
+0$
+b111001 .
+#615000
+b0 O
+b1 Q
+1"
+b1001 E
+0?
+b1 >
+b1001 Y
+1$
+#620000
+0$
+b111010 .
+#625000
+b10 >
+0"
+b10010 E
+b1 O
+b10 Q
+b1001 Y
+1$
+#630000
+0$
+b111011 .
+#635000
+b10 O
+b11 Q
+b11011 E
+1?
+b0 >
+b1001 Y
+1$
+#640000
+0$
+b111100 .
+#645000
+0?
+b1 >
+1"
+b1001 E
+b11 O
+b100 Q
+b1001 Y
+1$
+#650000
+0$
+b111101 .
+#655000
+b100 O
+b101 Q
+0"
+b10010 E
+b10 >
+b1001 Y
+1$
+#660000
+0$
+b111110 .
+#665000
+1?
+b0 >
+b11011 E
+b101 O
+b110 Q
+b1001 Y
+1$
+#670000
+0$
+b111111 .
+#675000
+b110 O
+b111 Q
+1"
+b1001 E
+0?
+b1 >
+b1001 Y
+1$
+#680000
+0$
+b1000000 .
+#685000
+b10 >
+0"
+b10010 E
+b111 O
+b0 Q
+b1001 Y
+1$
+#690000
+0$
+0)
+#695000
+0:
+b11011 E
+1?
+b0 >
+b1001 Y
+1$
+#700000
+0$
+#705000
+0R
+0?
+b1 >
+1"
+b1001 E
+04
+b1001 Y
+1$
+#710000
+0$
+#715000
+0W
+0"
+b10010 E
+b10 >
+b1001 Y
+1$
+#720000
+0$
+#725000
+1?
+b0 >
+b11011 E
+0X
+1$
+#730000
+0$
+#735000
+08
+1"
+b1001 E
+0?
+b1 >
+1$
+#740000
+0$
+#745000
+0"
+1$
+#750000
+0$
+#755000
+1$
+#760000
+0$
+#765000
+1$
+#770000
+0$
+#775000
+1$
+#780000
+0$
+#785000
+1$
+#790000
+0$
+#795000
+1$
+#800000
+0$
+#805000
+1$
+#810000
+0$
+#815000
+1$
+#820000
+0$
+#825000
+1$
+#830000
+0$
+#835000
+1$
+#840000
+0$

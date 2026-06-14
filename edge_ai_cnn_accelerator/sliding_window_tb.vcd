@@ -1,0 +1,151 @@
+$date
+	Sat Mar 14 13:49:29 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module sliding_window_tb $end
+$var wire 72 ! window_out [71:0] $end
+$var wire 1 " valid_out $end
+$var reg 1 # clk $end
+$var reg 8 $ col_row0 [7:0] $end
+$var reg 8 % col_row1 [7:0] $end
+$var reg 8 & col_row2 [7:0] $end
+$var reg 1 ' en $end
+$var reg 1 ( rst_n $end
+$scope module uut $end
+$var wire 1 # clk $end
+$var wire 8 ) col_row0 [7:0] $end
+$var wire 8 * col_row1 [7:0] $end
+$var wire 8 + col_row2 [7:0] $end
+$var wire 1 ' en $end
+$var wire 1 ( rst_n $end
+$var parameter 32 , DATA_WIDTH $end
+$var reg 8 - r0_c0 [7:0] $end
+$var reg 8 . r0_c1 [7:0] $end
+$var reg 8 / r0_c2 [7:0] $end
+$var reg 8 0 r1_c0 [7:0] $end
+$var reg 8 1 r1_c1 [7:0] $end
+$var reg 8 2 r1_c2 [7:0] $end
+$var reg 8 3 r2_c0 [7:0] $end
+$var reg 8 4 r2_c1 [7:0] $end
+$var reg 8 5 r2_c2 [7:0] $end
+$var reg 1 " valid_out $end
+$var reg 72 6 window_out [71:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1000 ,
+$end
+#0
+$dumpvars
+b0 6
+b0 5
+b0 4
+b0 3
+b0 2
+b0 1
+b0 0
+b0 /
+b0 .
+b0 -
+b0 +
+b0 *
+b0 )
+0(
+0'
+b0 &
+b0 %
+b0 $
+0#
+0"
+b0 !
+$end
+#5000
+1#
+#10000
+0#
+#15000
+1#
+#20000
+0#
+1(
+#25000
+1#
+#30000
+0#
+b110001 $
+b110001 )
+b100001 %
+b100001 *
+b10001 &
+b10001 +
+1'
+#35000
+1"
+b1100010000000000000000001000010000000000000000000100010000000000000000 !
+b1100010000000000000000001000010000000000000000000100010000000000000000 6
+b110001 5
+b100001 2
+b10001 /
+1#
+#40000
+0#
+b110010 $
+b110010 )
+b100010 %
+b100010 *
+b10010 &
+b10010 +
+#45000
+b1100100011000100000000001000100010000100000000000100100001000100000000 !
+b1100100011000100000000001000100010000100000000000100100001000100000000 6
+b110010 5
+b110001 4
+b100010 2
+b100001 1
+b10010 /
+b10001 .
+1#
+#50000
+0#
+b110011 $
+b110011 )
+b100011 %
+b100011 *
+b10011 &
+b10011 +
+#55000
+b1100110011001000110001001000110010001000100001000100110001001000010001 !
+b1100110011001000110001001000110010001000100001000100110001001000010001 6
+b110011 5
+b110010 4
+b110001 3
+b100011 2
+b100010 1
+b100001 0
+b10011 /
+b10010 .
+b10001 -
+1#
+#60000
+0#
+0'
+#65000
+0"
+1#
+#70000
+0#
+#75000
+1#
+#80000
+0#
+#85000
+1#
+#90000
+0#

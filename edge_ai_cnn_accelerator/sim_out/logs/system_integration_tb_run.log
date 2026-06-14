@@ -1,0 +1,4 @@
+FST info: dumpfile sim_out/waveforms/system.fst opened for output.
+Starting System Level Test
+PASS: System integration test complete. CNN asserted done.
+tb/system_integration_tb.v:51: $finish called at 9675000 (1ps)

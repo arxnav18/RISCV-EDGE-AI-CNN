@@ -1,0 +1,3 @@
+FST info: dumpfile sim_out/waveforms/conv3d_accelerator.fst opened for output.
+PASS: Conv3D completed
+tb/conv3d_accelerator_tb.v:84: $finish called at 2200000 (1ps)

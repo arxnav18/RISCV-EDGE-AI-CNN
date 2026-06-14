@@ -1,0 +1,120 @@
+$date
+	Sun Mar 15 16:48:02 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module cnn_controller_tb $end
+$var wire 1 ! write_output $end
+$var wire 1 " next_pixel $end
+$var wire 1 # load_window $end
+$var wire 1 $ enable_mac $end
+$var wire 1 % done $end
+$var parameter 32 & DEBUG_LEVEL $end
+$var reg 1 ' clk $end
+$var reg 1 ( done_seen $end
+$var reg 1 ) image_done $end
+$var reg 1 * mac_done $end
+$var reg 1 + rst_n $end
+$var reg 1 , start $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1 &
+$end
+#0
+$dumpvars
+0,
+0+
+0*
+0)
+0(
+0'
+0%
+0$
+0#
+0"
+0!
+$end
+#5000
+1'
+#10000
+0'
+#15000
+1'
+#20000
+0'
+1+
+#25000
+1'
+#26000
+1,
+#30000
+0'
+#35000
+1#
+1'
+#36000
+1#
+0,
+#40000
+0'
+#45000
+1$
+0#
+1'
+#50000
+0'
+#55000
+1$
+1'
+#56000
+1$
+1*
+#60000
+0'
+#65000
+1!
+0$
+1'
+#66000
+1!
+0*
+#70000
+0'
+#75000
+1"
+0!
+1'
+#76000
+1"
+1)
+#80000
+0'
+#85000
+1%
+0"
+1'
+#86000
+1%
+0)
+#90000
+0'
+#95000
+0%
+1(
+1'
+#100000
+0'
+#105000
+1'
+#110000
+0'
+#115000
+1'
+#120000
+0'

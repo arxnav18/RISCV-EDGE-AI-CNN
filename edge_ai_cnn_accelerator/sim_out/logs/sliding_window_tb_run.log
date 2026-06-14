@@ -1,0 +1,7 @@
+FST info: dumpfile sim_out/waveforms/sliding_window.fst opened for output.
+Window Valid!
+Top Row: 12 11 00
+Mid Row: 22 21 00
+Bot Row: 32 31 00
+SW Test PASS
+tb/sliding_window_tb.v:83: $finish called at 90000 (1ps)

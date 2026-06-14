@@ -1,0 +1,3 @@
+FST info: dumpfile sim_out/waveforms/cnn_controller.fst opened for output.
+FAIL: CNN Controller did not finish.
+tb/cnn_controller_tb.v:57: $finish called at 140000 (1ps)

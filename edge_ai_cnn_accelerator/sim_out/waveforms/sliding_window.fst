@@ -1,0 +1,89 @@
+$date
+	Sun Mar 15 16:48:02 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module sliding_window_tb $end
+$var wire 72 ! window_out [71:0] $end
+$var wire 1 " valid_out $end
+$var parameter 32 # DEBUG_LEVEL $end
+$var reg 1 $ clk $end
+$var reg 8 % col_row0 [7:0] $end
+$var reg 8 & col_row1 [7:0] $end
+$var reg 8 ' col_row2 [7:0] $end
+$var reg 1 ( en $end
+$var reg 1 ) rst_n $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1 #
+$end
+#0
+$dumpvars
+0)
+0(
+b0 '
+b0 &
+b0 %
+0$
+0"
+b0 !
+$end
+#5000
+1$
+#10000
+0$
+#15000
+1$
+#20000
+0$
+1)
+#25000
+1$
+#30000
+0$
+b110001 %
+b100001 &
+b10001 '
+1(
+#35000
+1"
+b1100010000000000000000001000010000000000000000000100010000000000000000 !
+1$
+#40000
+0$
+b110010 %
+b100010 &
+b10010 '
+#45000
+b1100100011000100000000001000100010000100000000000100100001000100000000 !
+1$
+#50000
+0$
+b110011 %
+b100011 &
+b10011 '
+#55000
+b1100110011001000000000001000110010001000000000000100110001001000000000 !
+1$
+#60000
+0$
+0(
+#65000
+0"
+1$
+#70000
+0$
+#75000
+1$
+#80000
+0$
+#85000
+1$
+#90000
+0$
