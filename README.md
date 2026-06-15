@@ -1,7 +1,7 @@
 # RISC-V RV32I + LeNet-5 CNN Hardware Accelerator SoC
 
 <p align="center">
-  <img src="docs/images/soc_banner.png" alt="SoC Architecture" width="100%"/>
+  <img src="docs/images/convolution_accelerator_diagram.png" alt="SoC Architecture" width="100%"/>
 </p>
 
 <p align="center">
@@ -91,8 +91,13 @@ The top-level SoC (`system_top.v`) integrates two primary subsystems over an int
 ```
 
 <p align="center">
-  <img src="docs/images/system_integration_diagram.png" alt="SoC Integration Diagram" width="80%"/>
+  <img src="docs/images/lenet5_system_architecture.png" alt="SoC Integration Diagram" width="80%"/>
   <br><em>Figure 1 — system_top.v SoC hierarchy and dataflow</em>
+</p>
+
+<p align="center">
+  <img src="docs/images/system_flowchart.png" alt="Methodology Flowchart" width="55%"/>
+  <br><em>Figure 2 — Design and verification methodology flowchart</em>
 </p>
 
 ---
@@ -100,8 +105,8 @@ The top-level SoC (`system_top.v`) integrates two primary subsystems over an int
 ## RISC-V RV32I Processor
 
 <p align="center">
-  <img src="docs/images/riscv_pipeline_architecture.png" alt="RISC-V 5-Stage Pipeline" width="85%"/>
-  <br><em>Figure 2 — RISC-V RV32I 5-stage pipeline architecture</em>
+  <img src="docs/images/processor_block_diagram.png" alt="RISC-V 5-Stage Pipeline" width="85%"/>
+  <br><em>Figure 3 — RISC-V RV32I 5-stage pipeline architecture</em>
 </p>
 
 The processor implements the classic five-stage structure — Instruction Fetch, Instruction Decode, Execute, Memory Access, and Write-Back — with dedicated pipeline registers separating each stage. Multiple instructions are in-flight at any given time.
@@ -163,7 +168,7 @@ Input Image (up to 2048 × 2048, up to 255 channels)
 
 <p align="center">
   <img src="docs/images/lenet5_pipeline_datapath.png" alt="CNN Datapath" width="80%"/>
-  <br><em>Figure 3 — CNN Datapath / LeNet-5 Hardware Pipeline</em>
+  <br><em>Figure 4 — CNN Datapath / LeNet-5 Hardware Pipeline</em>
 </p>
 
 ### Convolution Engine
@@ -177,8 +182,8 @@ Each convolution layer is built around three chained units:
 **MAC Array (`mac_array.v`):** Nine parallel INT8 multipliers compute all 9 pixel-weight products simultaneously. A balanced binary adder tree then reduces these to a single 32-bit signed accumulation result. The depth of the adder tree is 4 levels (ceil(log2(9))). One complete 3×3 convolution result comes out every clock cycle once the pipeline is primed.
 
 <p align="center">
-  <img src="docs/images/conv2d_accelerator_block.png" alt="CONV2D Block Diagram" width="85%"/>
-  <br><em>Figure 4 — CONV2D Accelerator internal block diagram</em>
+  <img src="docs/images/convolution_accelerator_diagram.png" alt="CONV2D Block Diagram" width="85%"/>
+  <br><em>Figure 5 — CONV2D Accelerator internal block diagram</em>
 </p>
 
 The nine MAC units map directly to DSP48E1 slices on Xilinx FPGAs, keeping the multiplier logic out of the LUT fabric entirely. Post-implementation shows 21 DSP48E1 slices consumed for all 9 MACs plus accumulator registers.
@@ -204,8 +209,8 @@ stateDiagram-v2
 ```
 
 <p align="center">
-  <img src="docs/images/fsm_state_diagram.png" alt="FSM State Diagram" width="55%"/>
-  <br><em>Figure 5 — CNN Controller FSM (IDLE to DONE)</em>
+  <img src="docs/images/controller_fsm_diagram.png" alt="FSM State Diagram" width="55%"/>
+  <br><em>Figure 6 — CNN Controller FSM (IDLE to DONE)</em>
 </p>
 
 Clock gating is applied between layer transitions — when Layer 1 is in CONV1_WAIT, only the Layer 1 logic is gated off. During FC_RUN, Layers 1 and 2 are both clock-gated to save switching power. This is implemented as qualified clock enables on pipeline register inputs rather than actual clock tree gating (which is synthesis-tool-specific).
@@ -219,6 +224,11 @@ Before the computation pipeline starts, a lightweight burst DMA engine loads ima
 ## MMIO Register Interface
 
 The CNN peripheral exposes 17 configuration registers through the MMIO address space starting at `0x1000`. The RISC-V processor configures the accelerator with standard `SW` instructions and polls the DONE bit with `LW`.
+
+<p align="center">
+  <img src="docs/images/mmio_register_map.png" alt="MMIO Register Map" width="100%"/>
+  <br><em>Figure 11 — MMIO Register Map (base address 0x1000)</em>
+</p>
 
 | Offset | Register | Width | Description |
 |--------|----------|-------|-------------|
@@ -290,7 +300,7 @@ The `[FWD]` annotations confirm the data forwarding unit is resolving RAW hazard
 
 <p align="center">
   <img src="docs/images/riscv_pipeline_waveform.png" alt="Pipeline Waveform" width="90%"/>
-  <br><em>Figure 6 — RISC-V 5-stage pipeline GTKWave simulation. Note the forward_a / forward_b signals asserting non-zero values at hazard boundaries.</em>
+  <br><em>Figure 7 — RISC-V 5-stage pipeline GTKWave simulation. Note the forward_a / forward_b signals asserting non-zero values at hazard boundaries.</em>
 </p>
 
 Key signals visible in the waveform:
@@ -320,7 +330,7 @@ PASS: System integration test complete. CNN asserted done.
 
 <p align="center">
   <img src="docs/images/system_integration_waveform.png" alt="System Integration Waveform" width="90%"/>
-  <br><em>Figure 7 — System integration simulation. The FSM state[2:0] cycles through load-window → MAC-enable → out-valid. pixel_out = 0x00000018 (24) is cross-validated against Python NumPy.</em>
+  <br><em>Figure 8 — System integration simulation. The FSM state[2:0] cycles through load-window → MAC-enable → out-valid. pixel_out = 0x00000018 (24) is cross-validated against Python NumPy.</em>
 </p>
 
 The waveform confirms:
@@ -360,7 +370,7 @@ Post-implementation static timing analysis results:
 
 <p align="center">
   <img src="docs/images/vivado_timing_summary.png" alt="Timing Summary" width="75%"/>
-  <br><em>Figure 8 — Vivado post-implementation timing summary</em>
+  <br><em>Figure 9 — Vivado post-implementation timing summary</em>
 </p>
 
 With WNS = +4.57 ns on a 10 ns period, the critical path runs at roughly 170 MHz — meaning there's significant headroom before timing closure would be threatened by further logic additions or a tighter frequency target.
@@ -378,7 +388,7 @@ With WNS = +4.57 ns on a 10 ns period, the critical path runs at roughly 170 MHz
 
 <p align="center">
   <img src="docs/images/vivado_resource_utilization.png" alt="Resource Utilization" width="75%"/>
-  <br><em>Figure 9 — Vivado post-implementation resource utilization report</em>
+  <br><em>Figure 10 — Vivado post-implementation resource utilization report</em>
 </p>
 
 A few things worth noting here:
